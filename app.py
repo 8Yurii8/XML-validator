@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 from main import XMLValidator
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
+
 validator = XMLValidator()
 
 @app.route('/')
