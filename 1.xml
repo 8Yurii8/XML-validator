@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:saxon="http://saxon.sf.net/"
+    xmlns:wdExtensions="java:com.whitedoc.xslt.extensions.WdExtensions"
+    exclude-result-prefixes="saxon wdExtensions">
+<xsl:output indent="yes"/>
+<xsl:template match="/">
+ 
+<envelope templateUuid="8B74A4CE-4E40-4B9F-81B8-587668660FA7" templateVersion="5B5A3708-AB3F-498B-8A4B-E62A73F142B9">
+  <info>
+    <subject></subject>
+  </info>
+  <documents>
+    <document id="212de32d-0cea-4b2b-ba96-3a3cd0176c30">
+      <field name="Вендор-код компанії контрагента Vendor сode">12345</field>
+      <field name="Тип документа Type of document">SomeType</field>
+      <field name="Номер документу Number of document">ABC123</field>
+      <field name="Дата головного документу Date of main document">2022-04-27</field>
+      <field name="Сума платежу без ПДВ Amount without VAT">100.00</field>
+      <field name="Валюта платежу Currency">USD</field>
+      <field name="Період оплати Payment period">92</field>
+      <field name="Додаткова інформація Notes">Some notes</field>
+      <field name="Сума договору Amount сontract">Без грошовий</field>
+    </document>
+  </documents>
+  <flow>
+    <roles>
+      <role id="f5ec27a9-12a2-4fbb-82f4-1748754f2d93" mailboxUuid="eaa5534c-6dba-40cf-bc4e-3570db4d72c1"></role>
+      <role id="ed052969-f5f7-4da4-9634-8d62affc39df" mailboxUuid="952b2df8-8dd8-4459-81ab-6ee98c9bf023"></role>
+    </roles>
+  </flow>
+</envelope>
+
+</xsl:template>
+</xsl:stylesheet>

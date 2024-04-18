@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:saxon="http://saxon.sf.net/"
+    xmlns:wdExtensions="java:com.whitedoc.xslt.extensions.WdExtensions"
+    exclude-result-prefixes="saxon wdExtensions">
+<xsl:output indent="yes"/>
+<xsl:template match="/">
+<xsl:variable name="subject" select="envelope/documents/document/field[@name='Тип документа Type of document']"/>
+    <xsl:variable name="message" select="envelope/documents/document/field[@name='Вендор-код компанії контрагента Vendor сode']"/>
+    <xsl:variable name="message1" select="envelope/documents/document/field[@name='Назва компанії контрагента англ.мовою Vendor name EN']"/>
+    
+    <xsl:variable name="envelopedate" select="envelope/state/date"/>
+    <xsl:variable name="numtran" select="translate(translate(translate(translate(translate($envelopedate, 'Z', ''),':',''),'.',''),'-',''),'T','')"/>
+    <xsl:variable name="snumtran" select="substring($numtran, 12, 6)"/>
+    <xsl:variable name="envelopuuid" select="$snumtran"/>
+
+<envelope templateUuid="B9FEF541-4165-43B0-9B65-7E96243E1E59" templateVersion="4D9B0D52-EFDA-43D2-A048-C9C6E5A1F5E0">
+  <info>
+    <subject><xsl:value-of select="$subject"/>_<xsl:value-of select="$envelopuuid"/>_<xsl:value-of select="$message1"/>,<xsl:value-of select="$message"/></subject>
+  </info>
+  <documents>
+    <document id="212de32d-0cea-4b2b-ba96-3a3cd0176c30">
+        
+      <xsl:variable name="Vendorсode" select="envelope/documents/document/field[@name='Вендор-код компанії контрагента Vendor сode']"></xsl:variable>
+      <field name="Вендор-код компанії контрагента Vendor сode" recordUuid="{wdExtensions:getRecordUuidByValueFromDictionary('e2c8b5fa-915d-4845-a69f-47d6de624ece', 'e8450042-3bd4-4fbe-a476-eb8267f0860f', $Vendorсode)}"><xsl:value-of select="$Vendorсode"/></field>
+      
+      <xsl:variable name="Typedocument" select="envelope/documents/document/field[@name='Тип документа Type of document']"></xsl:variable>
+      <field name="Тип документа Type of document" recordUuid="{wdExtensions:getRecordUuidByValueFromDictionary('2a6b2d2f-346a-4968-901f-8571ee76cf84', 'b4b2b8a2-ad00-4e44-98ce-27a0360c61a2', $Typedocument)}"><xsl:value-of select="$Typedocument"/></field>
+      
+      <field name="Номер документу Number of document"><xsl:value-of select="envelope/documents/document/field[@name='Номер документу Number of document']"/></field>
+      <field name="Дата головного документу Date of main document"><xsl:value-of select="envelope/documents/document/field[@name='Дата головного документу Date of main document']"/></field>
+      <field name="Сума платежу без ПДВ Amount without VAT"><xsl:value-of select="envelope/documents/document/field[@name='Сума платежу без ПДВ Amount without VAT']"/></field>
+      
+      <xsl:variable name="Currency" select="envelope/documents/document/field[@name='Валюта платежу Currency']"></xsl:variable>
+      <field name="Валюта платежу Currency" recordUuid="{wdExtensions:getRecordUuidByValueFromDictionary('fd6d30d5-e0b3-48d1-a1bd-6e9c72a10a76', '7b9160ff-0acb-4aef-832a-cbd0046f18ea', $Currency)}"><xsl:value-of select="$Currency"/></field>
+      
+      <field name="Період оплати Payment period"><xsl:value-of select="envelope/documents/document/field[@name='Період оплати Payment period']"/></field>
+      <field name="Додаткова інформація Notes"><xsl:value-of select="envelope/documents/document/field[@name='Додаткова інформація Notes']"/></field>
+    </document>
+    <document id="5cfa5923-c76a-409f-817c-7432ce39372c">
+      <field name="46c3ddac-3ce1-4859-bd11-c44f586986ad"></field>
+    </document>
+    <document id="6408b5d1-0866-472a-adb7-dc17795a14af">
+      <field name="2b5bef9f-1f26-4f14-95a4-cb8a79794b4c"></field>
+    </document>
+    <document id="1b8103ca-9e5c-4bd2-817d-579907079800">
+      <field name="2e22f77f-a99b-4a96-a456-51489c8ceead"></field>
+    </document>
+    <document id="3c37cf44-c516-4cad-b884-93137eccdf10">
+      <field name="3f7fc02d-e5cc-47ae-921f-ff0235f98462"></field>
+    </document>
+    <document id="e35b5629-4803-4049-baa6-f9c19185baf6">
+      <field name="6f4cdc15-6aba-4b21-a96d-94ffe1c31118"></field>
+    </document>
+    <document id="6bd12d1c-94b9-4d98-ac10-b5686f01e276">
+      <field name="ad326449-d9f3-4e31-901a-6db4ad6e73d6"></field>
+    </document>
+    <document id="e3152159-33c1-458f-8276-b435a4d5d61f">
+      <field name="ddb8644d-ed59-4a9b-978a-2f4de08cbfe2"></field>
+    </document>
+    <document id="fda72751-0e3c-45cb-ab25-f1030d63be7e">
+      <field name="c2983b28-ea29-4c2a-8c0e-b1dd0eeca097"></field>
+    </document>
+    <document id="a9877e7d-1e97-4b62-b625-ae8b14b4b072">
+      <field name="887543b1-b8a8-4c77-b432-cddd4c3e3e86"></field>
+    </document>
+    <document id="ab6318a5-4907-4293-83b0-ee3f87d07877"></document>
+  </documents>
+  <flow>
+    <roles>
+      <role id="f5ec27a9-12a2-4fbb-82f4-1748754f2d93" mailboxUuid="eaa5534c-6dba-40cf-bc4e-3570db4d72c1"></role>
+      <role id="e7180ce1-25b5-4f4d-8a11-09481c8f4daa" mailboxUuid="9a64d0af-7a2f-40e0-bca3-a29627e255e5"></role>
+      <role id="ed052969-f5f7-4da4-9634-8d62affc39df" mailboxUuid="d300153e-fa54-4312-b4e7-d859de81ceb6"></role>
+      <role id="3204112e-7d2e-46c7-9e93-4bae33f7a572" mailboxUuid=""></role>
+      <role id="ee93b4bc-6ec0-4ac4-b5ff-841ff99fa60d" mailboxUuid="aef2a2d1-5876-4180-b097-73d9afb3d4f7"></role>
+      <role id="7c8ab492-cfbe-49d5-a25f-13fbe57ac1f6" mailboxUuid=""></role>
+      <role id="198a563a-cab1-4a97-b73f-e96336d761d7" mailboxUuid="aef2a2d1-5876-4180-b097-73d9afb3d4f7"></role>
+    </roles>
+  </flow>
+</envelope>
+
+</xsl:template>
+</xsl:stylesheet>

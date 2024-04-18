@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Завантажити файли</title>
+  </head>
+  <body>
+    <h1>Завантажити файли</h1>
+    <form action="/transform" method="post" enctype="multipart/form-data">
+      <input type="file" name="xmlFile" accept=".xml" /><br />
+      <input type="file" name="xsltFile" accept=".xslt, .xsl" /><br />
+      <input type="submit" value="Виконати трансформацію" />
+    </form>
+  </body>
+</html>
